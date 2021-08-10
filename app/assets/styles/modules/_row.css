@@ -1,23 +1,12 @@
 .row {
-  @mixin clearfix;
+  /* @mixin clearfix;*/
 
   &--t-padding {
     padding-top: 80px;
   }
 
-  &--gutters {
-    margin-right: -65px;
-  }
-
-  &--gutters-large {
-    margin-right: -100px;
-  }
-
-  &--gutters-small {
-    margin-right: -45px;
-  }
-
-  &--gutters > div {
+  /* this code was used in floats*/
+  /* &--gutters > div {
     padding-right: 65px;
   }
 
@@ -27,74 +16,101 @@
 
   &--gutters-small > div {
     padding-right: 45px;
-  }
+  }*/
 
   &__b-margin-until-medium {
     margin-bottom: 1rem;
   }
 
   @mixin atMedium {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    &--gutters {
+      grid-gap: 5.3%;
+      /*margin-right: -65px; used in float*/
+    }
+
+    &--gutters-large {
+      margin-right: 8%;
+      /* margin-right: -100px; used in float*/
+    }
+
+    &--gutters-small {
+      margin-right: 3.6%;
+      /* margin-right: -45px; used in float*/
+    }
 
     &__b-margin-until-medium {
       margin-bottom: 0;
     }
 
-    &__medium-4 {
-      float: left;
-      width: 33.33%;
+    &__large-1,
+    &__large-2,
+    &__large-3,
+    &__large-4,
+    &__large-5,
+    &__large-6,
+    &__large-7,
+    &__large-8,
+    &__large-9,
+    &__large-10,
+    &__large-11,
+    &__large-12{
+      grid-column: span 12;
     }
 
-    &__medium-4--larger {
+
+    &__medium-4 {
+      grid-column: span 4;
+    }
+
+    /*&__medium-4--larger {
       width: 37%;
     }
+    */
 
     &__medium-6 {
-      float: left;
-      width: 50%;
+      grid-column: span 6;
     }
 
     &__medium-8 {
-      float: left;
-      width: 66.66%;
+      grid-column: span 8;
     }
 
-    &__medium-8--smaller {
+    /* &__medium-8--smaller {
       width: 63%;
-    }
+    }*/
 
   }
 
   @mixin atLarge {
-
     &__b-margin-until-large {
       margin-bottom: 0;
     }
 
     &__large-4 {
-      float: left;
-      width: 33.33%;
+    grid-column: span 4;
     }
 
-    &__large-4--larger {
+    /*&__large-4--larger {
       width: 37%;
-    }
+    }*/
 
     &__large-6 {
-      float: left;
-      width: 50%;
+      grid-column: span 6;
     }
 
     &__large-8 {
-      float: left;
-      width: 66.66%;
+      grid-column: span 8;
     }
 
-    &__large-8--smaller {
+    /*&__large-8--smaller {
       width: 63%;
-    }
+    }*/
 
   }
-  
+
   /* Begin Equal Height Rules */
   &--equal-height-at-medium {
     @mixin atMedium {
@@ -105,19 +121,14 @@
       float: none;
       display: flex;
     }
-
   }
 
   &--equal-height-at-large {
     @mixin atLarge {
-      display: flex;
-    }
-
-    & > div {
-      float: none;
-      display: flex;
+      & > div {       
+        display: flex;
+      }     
     }
 
   }
-
 }
